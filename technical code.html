@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechCareer Guide | Explore Your Future in Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --border-hover: #cbd5e1;
+      --primary: #4338ca;
+      --primary-light: #eef2ff;
+      --accent: #2563eb;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --tag-bg: #f1f5f9;
+      --badge-beginner: #dcfce7;
+      --badge-beginner-txt: #15803d;
+      --badge-inter: #fef3c7;
+      --badge-inter-txt: #b45309;
+      --badge-adv: #fee2e2;
+      --badge-adv-txt: #b91c1c;
+      --radius: 18px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 20px -2px rgba(0,0,0,0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Badge Label */
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #3b82f6;
+      background-color: #eff6ff;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Section 1: Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title span {
+      color: #3b82f6;
+    }
+
+    .hero-desc {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.2rem;
+      text-align: left;
+    }
+
+    .stat-number {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .stat-label {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Hero Right List */
+    .hero-paths-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .paths-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .paths-card-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .paths-card-header .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #ecfdf5;
+      color: #059669;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+    }
+
+    .hero-path-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-path-item:last-child {
+      border-bottom: none;
+    }
+
+    .path-info {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .path-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--tag-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .path-text .name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .path-text .category {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .path-salary {
+      text-align: right;
+    }
+
+    .path-salary .val {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .path-salary .lbl {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Cards Grid */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .role-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .role-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .role-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .role-icon-box {
+      font-size: 1.5rem;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .role-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-top: 0.15rem;
+    }
+
+    .role-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      min-height: 44px;
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-chip {
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: var(--tag-bg);
+      border: 1px solid #e2e8f0;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      color: #334155;
+    }
+
+    .role-card-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    .role-card-footer .salary {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .role-card-footer .caption {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Comparison Table Section */
+    .table-section {
+      margin-bottom: 4rem;
+    }
+
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.875rem;
+    }
+
+    th {
+      background: #fafafa;
+      color: #475569;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .table-role-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .table-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+    }
+
+    .badge-beginner { background: var(--badge-beginner); color: var(--badge-beginner-txt); }
+    .badge-intermediate { background: var(--badge-inter); color: var(--badge-inter-txt); }
+    .badge-advanced { background: var(--badge-adv); color: var(--badge-adv-txt); }
+
+    .btn-action {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #334155;
+      transition: background 0.15s ease;
+    }
+
+    .btn-action:hover {
+      background: #e2e8f0;
+    }
+
+    .disclaimer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Companies Directory */
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .company-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+    }
+
+    .company-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .company-card .comp-name {
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .company-card .comp-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Roadmap Section */
+    .roadmap-section {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .roadmap-box, .guide-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .role-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin: 1rem 0 1.5rem 0;
+      background: #fff;
+    }
+
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .check-item input[type="checkbox"] {
+      margin-top: 0.25rem;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .check-item .info h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .check-item .info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .step-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .step-card span.num {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #94a3b8;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .step-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .step-card p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+    }
+
+    /* Quiz Section */
+    .quiz-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .quiz-group h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-
